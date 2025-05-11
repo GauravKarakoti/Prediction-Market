@@ -5,7 +5,6 @@ venv
 # Hardhat files
 /cache
 /artifacts
-/test
 
 # TypeChain files
 /typechain
