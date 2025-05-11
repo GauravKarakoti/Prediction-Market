@@ -13,11 +13,6 @@ const accounts = process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : {
 module.exports = {
   solidity: "0.8.24",
   networks: {
-    sapphire: {
-      url: "https://sapphire.oasis.io",
-      chainId: 0x5afe,
-      accounts,
-    },
     "sapphire-testnet": {
       url: "https://testnet.sapphire.oasis.io",
       accounts,
