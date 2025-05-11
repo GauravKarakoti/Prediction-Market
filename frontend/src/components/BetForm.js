@@ -1,7 +1,7 @@
 import { OPLGateway } from "@oasisprotocol/opl";
 
 async function placeCrossChainBet(prediction) {
-  // Connect to Ethereum (e.g., MetaMask)
+  // Connect to Ethereum 
   const provider = new ethers.BrowserProvider(window.ethereum);
   const signer = await provider.getSigner();
 
@@ -11,9 +11,9 @@ async function placeCrossChainBet(prediction) {
   
   const tx = await gateway.sendMessage({
     sender: signer.address,
-    destination: "sapphire", // Sapphire ParaTime
+    destination: "sapphire", 
     payload: payload,
-    feeToken: "ETH", // Gas paid in ETH
+    feeToken: "ETH", 
   });
 
   await tx.wait();

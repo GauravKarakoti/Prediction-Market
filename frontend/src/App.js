@@ -15,7 +15,7 @@ function App() {
     if (window.ethereum) {
       try {
         // Wrap provider for Sapphire compatibility
-        const sapphireChainId = NETWORKS.testnet; // Use NETWORKS.mainnet for production
+        const sapphireChainId = NETWORKS.testnet; 
         const wrappedProvider = wrapEthereumProvider(
           window.ethereum,
           sapphireChainId
@@ -47,10 +47,27 @@ function App() {
       );
       const signer = await provider.getSigner();
       
-      // Replace with your contract ABI and address
       const contract = new ethers.Contract(
-        'YOUR_CONTRACT_ADDRESS',
-        ['function placeBet(bool) external payable'],
+        '0x42dB46bD5EaF31e0E3DD2acd3324978EdD14965c',
+        [
+          {
+              "inputs": [],
+              "name": "nextUnresolvedBetId",
+              "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
+              "stateMutability": "view",
+              "type": "function"
+          },
+          {
+              "inputs": [
+                  {"internalType": "uint256", "name": "_betId", "type": "uint256"},
+                  {"internalType": "bool", "name": "_actualOutcome", "type": "bool"}
+              ],
+              "name": "resolveBet",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+          }
+        ],   //might change
         signer
       );
 
@@ -68,7 +85,7 @@ function App() {
 
   // Load existing bets
   useEffect(() => {
-    // TODO: Add contract interaction to fetch bets
+    // For Future : Add contract interaction to fetch bets
     const sampleBets = [
       { id: 1, amount: '0.1 ROSE', prediction: 'Yes', outcome: 'Pending' },
       { id: 2, amount: '0.2 ROSE', prediction: 'No', outcome: 'Won' },

@@ -69,4 +69,13 @@ contract PredictionMarket {
         }
         delete bets[_betId];
     }
+
+    function nextUnresolvedBetId() public view returns (uint256) {
+        for (uint256 i = 0; i < betCounter; i++) {
+            if (bets[i].better != address(0)) {
+                return i;
+            }
+        }
+        return type(uint256).max; // All resolved
+    }
 }
